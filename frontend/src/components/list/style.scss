@@ -1,0 +1,20 @@
+@import "@/styles/color.scss";
+
+.list {
+  height: 75%;
+  background-color: #56a0d3;
+  width: 75%;
+  padding: 5px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  overflow: auto;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+
+  .list-title {
+    text-align: center;
+  }
+}

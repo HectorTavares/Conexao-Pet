@@ -1,0 +1,39 @@
+server:
+  servlet:
+    context-path: /tcc
+    encoding:
+      enabled: true
+  port: 8090
+  error:
+    include-message: always
+    include-binding-errors: always
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+spring:
+  servlet:
+    multipart:
+      max-request-size: -1
+      max-file-size: -1
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      # ddl-auto: create-drop
+      #ddl-auto: create
+
+  datasource:
+    username: root
+    password: toor
+    url: jdbc:mysql://localhost:3306/$tcc_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+aws:
+  bucket-name: hv-tcc-bucket
+  region: sa-east-1
+  key: AKIAXBCSSREIOIMVAMD4
+  secret: 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
+
+twilio:
+  ACCOUNT_SID: ACdae1245e898fdfc079251573298f56a4
+  AUTH_TOKEN: 701a48443c2b1a148848dfd684781ac6

@@ -1,0 +1,48 @@
+@import "@/styles/color.scss";
+
+.interest-page {
+  background-color: $special-blue;
+  height: 100vh;
+
+  .interest-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .submit-interests-button {
+      color: white;
+      background-color: $dark-blue;
+    }
+
+    .new-interest-container {
+      .new-interest-content {
+        border-radius: 15px;
+        height: 700px;
+        width: 500px;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $light-blue;
+        padding: 10px;
+        box-shadow: 0px 0px 20px rgb(0 0 0 / 20%);
+
+        .button-container {
+          width: 100%;
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          .submit-button {
+            background-color: $blue;
+            color: white;
+            height: 50px;
+            width: 100px;
+            &:hover {
+              background-color: $dark-blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}

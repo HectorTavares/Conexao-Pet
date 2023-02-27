@@ -1,0 +1,194 @@
+CREATE DATABASE `$tcc_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+CREATE TABLE `SPRING_SESSION` (
+  `PRIMARY_ID` char(36) NOT NULL,
+  `SESSION_ID` char(36) NOT NULL,
+  `CREATION_TIME` bigint NOT NULL,
+  `LAST_ACCESS_TIME` bigint NOT NULL,
+  `MAX_INACTIVE_INTERVAL` int NOT NULL,
+  `EXPIRY_TIME` bigint NOT NULL,
+  `PRINCIPAL_NAME` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`PRIMARY_ID`),
+  UNIQUE KEY `SPRING_SESSION_IX1` (`SESSION_ID`),
+  KEY `SPRING_SESSION_IX2` (`EXPIRY_TIME`),
+  KEY `SPRING_SESSION_IX3` (`PRINCIPAL_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `SPRING_SESSION_ATTRIBUTES` (
+  `SESSION_PRIMARY_ID` char(36) NOT NULL,
+  `ATTRIBUTE_NAME` varchar(200) NOT NULL,
+  `ATTRIBUTE_BYTES` blob NOT NULL,
+  PRIMARY KEY (`SESSION_PRIMARY_ID`,`ATTRIBUTE_NAME`),
+  CONSTRAINT `SPRING_SESSION_ATTRIBUTES_FK` FOREIGN KEY (`SESSION_PRIMARY_ID`) REFERENCES `SPRING_SESSION` (`PRIMARY_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `animal` (
+  `id` bigint NOT NULL,
+  `caracteristicas` varchar(255) DEFAULT NULL,
+  `data_de_nascimento` date DEFAULT NULL,
+  `especie` varchar(255) DEFAULT NULL,
+  `genero` varchar(255) DEFAULT NULL,
+  `is_excluido` bit(1) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `porte` varchar(255) DEFAULT NULL,
+  `raca` varchar(255) DEFAULT NULL,
+  `situacao_vacinal` varchar(255) DEFAULT NULL,
+  `id_ong` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKsn0pa0t41fwmn55prmuwvuiis` (`id_ong`),
+  CONSTRAINT `FKsn0pa0t41fwmn55prmuwvuiis` FOREIGN KEY (`id_ong`) REFERENCES `ong` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `animal_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `askdsaik` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `avaliacao` (
+  `id` bigint NOT NULL,
+  `comentario` varchar(255) DEFAULT NULL,
+  `nota` double DEFAULT NULL,
+  `usuario_id` bigint DEFAULT NULL,
+  `id_usuario` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK7mvxm3fcdu2lbe4dp1519buxt` (`usuario_id`),
+  KEY `FKik01lj37b4mcswtkppjc9yket` (`id_usuario`),
+  CONSTRAINT `FK7mvxm3fcdu2lbe4dp1519buxt` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`),
+  CONSTRAINT `FKik01lj37b4mcswtkppjc9yket` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `avaliacao_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `avasdasaliacao_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `campanha` (
+  `id` bigint NOT NULL,
+  `data_criacao` date DEFAULT NULL,
+  `data_encerramento` date DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `id_ong` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK9fjp65461hus6al9s959715bd` (`id_ong`),
+  CONSTRAINT `FK9fjp65461hus6al9s959715bd` FOREIGN KEY (`id_ong`) REFERENCES `ong` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `campanha_interesse` (
+  `campanha_id` bigint NOT NULL,
+  `interesse_id` bigint NOT NULL,
+  KEY `FKrexgc8yi78peevvf16duma7cg` (`interesse_id`),
+  KEY `FK26i9w6cqki0wdekn147hjptg` (`campanha_id`),
+  CONSTRAINT `FK26i9w6cqki0wdekn147hjptg` FOREIGN KEY (`campanha_id`) REFERENCES `campanha` (`id`),
+  CONSTRAINT `FKrexgc8yi78peevvf16duma7cg` FOREIGN KEY (`interesse_id`) REFERENCES `interesse` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `campanha_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `foto` (
+  `id` bigint NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `id_foto` bigint DEFAULT NULL,
+  `id_campanha` bigint DEFAULT NULL,
+  `id_animal` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKit9pgc130ex6kapqeioy8mefw` (`id_foto`),
+  KEY `FK7iphkn9d451e738diqrxvvaqi` (`id_campanha`),
+  KEY `FKj1b5i149x4s5pw9w780313h4c` (`id_animal`),
+  CONSTRAINT `FK7iphkn9d451e738diqrxvvaqi` FOREIGN KEY (`id_campanha`) REFERENCES `campanha` (`id`),
+  CONSTRAINT `FKit9pgc130ex6kapqeioy8mefw` FOREIGN KEY (`id_foto`) REFERENCES `ong` (`id`),
+  CONSTRAINT `FKj1b5i149x4s5pw9w780313h4c` FOREIGN KEY (`id_animal`) REFERENCES `animal` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `foto_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `interesse` (
+  `id` bigint NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `interesse_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `ong` (
+  `id` bigint NOT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK97ajmpte96juifvjsvgp5gw2m` (`user_id`),
+  CONSTRAINT `FK97ajmpte96juifvjsvgp5gw2m` FOREIGN KEY (`user_id`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `ong_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `permission` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK2u317l99g1s18ctyk2rfyp7em` (`user_id`),
+  CONSTRAINT `FK2u317l99g1s18ctyk2rfyp7em` FOREIGN KEY (`user_id`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `usuario` (
+  `id` bigint NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `endereco` varchar(255) DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `nome` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `telefone` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_5171l57faosmj8myawaucatdw` (`email`),
+  UNIQUE KEY `UK_te8bt20syqgnhaes5vrmv0d31` (`senha`),
+  UNIQUE KEY `UK_86phslelq64eeo6insr50y422` (`telefone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `usuario_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `voluntario` (
+  `id` bigint NOT NULL,
+  `cpf` varchar(255) DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_1gjilcm5mu01ynkylxnad66t1` (`cpf`),
+  KEY `FK8395hsnbvkhw7anhe58royun2` (`user_id`),
+  CONSTRAINT `FK8395hsnbvkhw7anhe58royun2` FOREIGN KEY (`user_id`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `voluntario_interesse` (
+  `voluntario_id` bigint NOT NULL,
+  `interesse_id` bigint NOT NULL,
+  KEY `FKd1mrj0sl17jbto7o699x5innc` (`interesse_id`),
+  KEY `FKmexrar16kv7qua0dpkfy90skh` (`voluntario_id`),
+  CONSTRAINT `FKd1mrj0sl17jbto7o699x5innc` FOREIGN KEY (`interesse_id`) REFERENCES `interesse` (`id`),
+  CONSTRAINT `FKmexrar16kv7qua0dpkfy90skh` FOREIGN KEY (`voluntario_id`) REFERENCES `voluntario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `voluntario_seguido_ong` (
+  `voluntario_id` bigint NOT NULL,
+  `ong_id` bigint NOT NULL,
+  KEY `FKevgytx4s9b349n7cg43eqttx5` (`ong_id`),
+  KEY `FKqdgfb58k2m3d627gk1bl9ltjw` (`voluntario_id`),
+  CONSTRAINT `FKevgytx4s9b349n7cg43eqttx5` FOREIGN KEY (`ong_id`) REFERENCES `ong` (`id`),
+  CONSTRAINT `FKqdgfb58k2m3d627gk1bl9ltjw` FOREIGN KEY (`voluntario_id`) REFERENCES `voluntario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `voluntario_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

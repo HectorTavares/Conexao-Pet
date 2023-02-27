@@ -1,0 +1,22 @@
+@import "../../styles/color.scss";
+
+.register {
+  display: flex;
+  flex-direction: column;
+  background-color: $light-blue;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}

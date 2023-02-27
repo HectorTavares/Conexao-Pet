@@ -1,0 +1,29 @@
+.animal-card {
+  width: 600px;
+  height: 700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .animal-title {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .animal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .animal-description {
+    font-size: 16px;
+  }
+
+  .animal-description strong {
+    font-weight: bold;
+  }
+}

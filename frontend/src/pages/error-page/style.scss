@@ -1,0 +1,36 @@
+@import "@/styles/color.scss";
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $light-blue;
+}
+
+.error-container h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.error-container button {
+  background-color: $blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.error-container button:hover {
+  background-color: $dark-blue;
+}

@@ -1,0 +1,105 @@
+$primary-color: #1bd741;
+$secondary-color: #14a234;
+$gray-color: #666;
+$dark-gray-color: #333;
+$white-color: #fff;
+$gray-tittle: #5a5a5a;
+
+.notification-modal-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  .notification-container {
+    width: 40%;
+    height: 65%;
+    background-color: white;
+    border-radius: 25px;
+    position: relative;
+
+    .exit-button {
+      position: absolute;
+      right: 0;
+      color: rgb(89, 89, 89);
+      width: 30px;
+      height: 30px;
+      padding-right: 5px;
+
+      &:hover {
+        cursor: pointer;
+        scale: 1.05;
+      }
+    }
+
+    .modal__content {
+      background-color: $white-color;
+      border-radius: 5px;
+      padding: 2rem;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .modal__content__title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: $gray-tittle;
+      }
+
+      .modal__content__text {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+        display: flex;
+        text-align: justify;
+      }
+
+      .modal__content__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $primary-color;
+        color: $white-color;
+        border: none;
+        border-radius: 5px;
+        padding: 0.75rem 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        width: 50%;
+        height: 70px;
+        gap: 10px;
+
+        &:hover {
+          background-color: $secondary-color;
+        }
+      }
+
+      .modal__content__footer {
+        font-size: 1rem;
+        color: $gray-color;
+        margin-top: 1rem;
+
+        a {
+          color: $gray-color;
+          text-decoration: underline;
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: $dark-gray-color;
+          }
+        }
+      }
+    }
+  }
+}

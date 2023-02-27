@@ -1,0 +1,45 @@
+@import "@/styles/color.scss";
+
+.card-search-user-container {
+  width: 95%;
+  height: 12%;
+  padding: 10px;
+  background-color: $blue;
+  border-radius: 13px;
+  border-style: none;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .profile-avatar-infos {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .profile-avatar {
+      height: 50%;
+    }
+
+    .profile-main-infos {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      text-align: start;
+      justify-content: start;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #000000;
+    }
+
+    p {
+      text-align: start;
+      font-size: 15px;
+      color: #dddddd;
+    }
+  }
+}

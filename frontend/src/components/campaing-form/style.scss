@@ -1,0 +1,95 @@
+$primary-color: #3282b8;
+$secondary-color: #bbe1fa;
+$text-color: #1b262c;
+$danger-color: #d9534f;
+
+@import "@/styles/color.scss";
+
+.campaing {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  width: 100vw;
+  height: calc(100% - 64px);
+  padding: 20px;
+  overflow: auto;
+  margin-bottom: 70px;
+
+  .campaing-form {
+    max-width: 500px;
+    font-family: sans-serif;
+    background-color: $light-blue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .campaing-form-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1b262c;
+    }
+
+    .campaing-form-textfield {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: #f2f2f2;
+    }
+
+    .campaing-form-button {
+      background-color: #3282b8;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #0f4c75;
+      }
+    }
+
+    .campaing-form-input {
+      display: inline-block;
+      width: calc(100% - 8rem);
+      margin-right: 0.5rem;
+    }
+
+    .campaing-form-submit-button {
+      background-color: #3282b8;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      width: 25%;
+
+      &:hover {
+        background-color: #0f4c75;
+      }
+    }
+  }
+}
+
+.isLoading {
+  align-items: center;
+}
+
+.campaing-form-label {
+  display: block;
+  font-weight: bold;
+  margin: 0px;
+  color: #1b262c;
+}

@@ -1,0 +1,32 @@
+@import "@/styles/color.scss";
+.new-interest {
+  display: flex;
+  align-items: center;
+  background-color: $dark-blue;
+  color: #fff;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+
+  > .new-interest-button {
+    margin-left: 0.5rem;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.available {
+  cursor: pointer;
+  &:hover {
+    background-color: $blue;
+  }
+}
